@@ -1,1 +1,39 @@
 /*  your css code here. If applicable */
+#grid {
+  display: flex;
+  gap: 10px;
+  width: 900px;
+  max-width: 100%;
+  margin: 20px auto;
+  overflow: hidden;
+  transition: gap 0.5s ease;
+}
+
+.thumbail {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  cursor: pointer;
+  transition: flex-grow 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* expanded state */
+#grid.expanded {
+  gap: 0;
+}
+
+#grid.expanded .thumbail {
+  flex-grow: 0;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+#grid.expanded .thumbail.active,
+#grid.expanded #fullsize {
+  flex-grow: 1;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
